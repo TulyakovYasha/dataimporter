@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+
 import java.net.URL;
 
 @Entity
@@ -52,7 +53,8 @@ public class EventEntity {
     public EventEntity() {
     }
 
-    public EventEntity(@NotBlank String ssoid, Long ts, @NotBlank String grp, @NotBlank String type, @NotBlank String subtype, String url, String orgId, String formId, String ymdh) {
+    public EventEntity(@NotBlank String ssoid, Long ts, @NotBlank String grp, @NotBlank String type,
+            @NotBlank String subtype, String url, String orgId, String formId, String ymdh) {
         this.ssoid = ssoid;
         this.ts = ts;
         this.grp = grp;

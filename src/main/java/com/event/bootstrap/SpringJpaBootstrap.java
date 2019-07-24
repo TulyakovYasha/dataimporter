@@ -17,7 +17,6 @@ import java.util.List;
 @Component
 public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
-
     @Value("${event-service.bootstrap-file}")
     private String bootstrapFileName;
 

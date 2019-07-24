@@ -7,14 +7,17 @@ import java.time.format.DateTimeFormatter;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 public class DateTimeUtil {
+
     public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-ddHH:mm");
 
     public static Long getTimestamp(String date, String time) {
         if (isNotBlank(date) && isNotBlank(time)) {
             return LocalDateTime.parse(date + time, DATE_TIME_FORMATTER)
-                    .atZone(ZoneOffset.UTC)
-                    .toInstant()
-                    .toEpochMilli() / 1000;
-        } else return null;
+                                .atZone(ZoneOffset.UTC)
+                                .toInstant()
+                                .toEpochMilli() / 1000;
+        } else {
+            return null;
+        }
     }
 }

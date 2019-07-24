@@ -3,6 +3,7 @@ package com.event.dto;
 import java.net.URL;
 
 public class EventDto {
+
     private String ssoid;
     private Long ts;
     private String grp;
@@ -18,7 +19,8 @@ public class EventDto {
     public EventDto() {
     }
 
-    public EventDto(String ssoid, Long ts, String grp, String type, String subtype, String url, String orgId, String formId, String ymdh) {
+    public EventDto(String ssoid, Long ts, String grp, String type, String subtype, String url, String orgId,
+            String formId, String ymdh) {
         this.ssoid = ssoid;
         this.ts = ts;
         this.grp = grp;

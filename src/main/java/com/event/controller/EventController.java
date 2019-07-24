@@ -2,15 +2,12 @@ package com.event.controller;
 
 import com.event.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import java.time.LocalDateTime;
-
 
 @Controller
 @RequestMapping("/event")
@@ -37,8 +34,8 @@ public class EventController {
         String endDate = request.getParameter("endDate");
         String startTime = request.getParameter("startTime");
         String endTime = request.getParameter("endTime");
-        request.setAttribute("eventsBetween", eventService.getBetween(startDate, endDate, startTime, endTime));
-        return "between";
+        request.setAttribute("events", eventService.getBetween(startDate, endDate, startTime, endTime));
+        return "users";
     }
 
 }

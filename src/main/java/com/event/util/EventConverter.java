@@ -12,11 +12,15 @@ public final class EventConverter {
     }
 
     public static EventEntity convertToEntities(EventDto eventDto) {
-        return new EventEntity(eventDto.getSsoid(), eventDto.getTs(), eventDto.getGrp(), eventDto.getType(), eventDto.getSubtype(), eventDto.getUrl(), eventDto.getOrgId(), eventDto.getFormId(), eventDto.getYmdh());
+        return new EventEntity(eventDto.getSsoid(), eventDto.getTs(), eventDto.getGrp(), eventDto.getType(),
+                eventDto.getSubtype(), eventDto.getUrl(), eventDto.getOrgId(), eventDto.getFormId(),
+                eventDto.getYmdh());
     }
 
     public static EventDto convertToDtos(EventEntity eventEntity) {
-        return new EventDto(eventEntity.getSsoid(), eventEntity.getTs(), eventEntity.getGrp(), eventEntity.getType(), eventEntity.getSubtype(), eventEntity.getUrl(), eventEntity.getOrgId(), eventEntity.getFormId(), eventEntity.getYmdh());
+        return new EventDto(eventEntity.getSsoid(), eventEntity.getTs(), eventEntity.getGrp(), eventEntity.getType(),
+                eventEntity.getSubtype(), eventEntity.getUrl(), eventEntity.getOrgId(), eventEntity.getFormId(),
+                eventEntity.getYmdh());
     }
 
     public static List<EventEntity> convertToEntities(List<EventDto> list) {
