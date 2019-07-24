@@ -1,0 +1,25 @@
+spring:
+  main:
+    banner-mode: 'OFF'
+  application:
+    name: tv-order-stream-dell-orderimport-event
+  datasource:
+    url: jdbc:postgresql://localhost:5432/event_service
+    username: event-user
+    password: event-password
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  flyway:
+    enabled: true
+    url: ${spring.datasource.url}
+    user: flyway
+    password: flyway
+    schemas: public
+    baselineOnMigrate: true
+
+server:
+  port: 8080
+
+event-service:
+  bootstrap-file: "src/main/resources/test_case.csv"
+
