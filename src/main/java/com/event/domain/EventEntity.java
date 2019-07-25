@@ -1,12 +1,13 @@
 package com.event.domain;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-
-import java.net.URL;
 
 @Entity
 @Table(name = "events")
@@ -41,6 +42,9 @@ public class EventEntity {
     @Column(name = "form_id")
     private String formId;
 
+    @Column(name = "code")
+    private String code;
+
     @Column(name = "ltpa")
     private String ltpa;
 
@@ -54,7 +58,7 @@ public class EventEntity {
     }
 
     public EventEntity(@NotBlank String ssoid, Long ts, @NotBlank String grp, @NotBlank String type,
-            @NotBlank String subtype, String url, String orgId, String formId, String ymdh) {
+            @NotBlank String subtype, String url, String orgId, String formId, String code, String ymdh) {
         this.ssoid = ssoid;
         this.ts = ts;
         this.grp = grp;
@@ -63,6 +67,7 @@ public class EventEntity {
         this.url = url;
         this.orgId = orgId;
         this.formId = formId;
+        this.code = code;
         this.ymdh = ymdh;
     }
 
@@ -130,6 +135,14 @@ public class EventEntity {
         this.formId = formId;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     public String getLtpa() {
         return ltpa;
     }
@@ -152,5 +165,51 @@ public class EventEntity {
 
     public void setYmdh(String ymdh) {
         this.ymdh = ymdh;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        EventEntity that = (EventEntity) o;
+
+        return new EqualsBuilder()
+                .append(ssoid, that.ssoid)
+                .append(ts, that.ts)
+                .append(grp, that.grp)
+                .append(type, that.type)
+                .append(subtype, that.subtype)
+                .append(url, that.url)
+                .append(orgId, that.orgId)
+                .append(formId, that.formId)
+                .append(code, that.code)
+                .append(ltpa, that.ltpa)
+                .append(sudirResponse, that.sudirResponse)
+                .append(ymdh, that.ymdh)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(ssoid)
+                .append(ts)
+                .append(grp)
+                .append(type)
+                .append(subtype)
+                .append(url)
+                .append(orgId)
+                .append(formId)
+                .append(code)
+                .append(ltpa)
+                .append(sudirResponse)
+                .append(ymdh)
+                .toHashCode();
     }
 }

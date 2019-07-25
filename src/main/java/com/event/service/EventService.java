@@ -1,6 +1,5 @@
-package com.event.services;
+package com.event.service;
 
-import com.event.domain.EventEntity;
 import com.event.dto.FormUsageDto;
 import com.event.repository.EventEntityRepository;
 import com.event.dto.EventDto;
@@ -25,26 +24,26 @@ public class EventService {
     private EventEntityRepository repository;
 
     public List<EventDto> findAllForLastHour() {
-        long timeTo = System.currentTimeMillis() / 1000;
-        long eventTimeStamp = timeTo - (TimeUnit.HOURS.toMillis(1) / 1000);
-        return EventConverter.convertToDtos(repository.findAllByTsBetween(eventTimeStamp, timeTo));
+        long endTimestamp = System.currentTimeMillis() / 1000;
+        long startTimestamp = endTimestamp - (TimeUnit.HOURS.toMillis(1) / 1000);
+        return EventConverter.convertToDtos(repository.findAllByTsBetween(startTimestamp, endTimestamp));
+    }
+
+    public List<EventDto> findAllBetween(String startDate, String endDate, String startTime, String endTime) {
+        Long startTimestamp = getTimestamp(startDate, startTime);
+        Long endTimestamp = getTimestamp(endDate, endTime);
+        return EventConverter.convertToDtos(repository.findAllByTsBetween(startTimestamp, endTimestamp));
     }
 
     public void saveAll(List<EventDto> list) {
         List<EventDto> validEvents = list.stream()
-                                         .filter(validator::isEventValid)
+                                         .filter(validator::isValid)
                                          .collect(Collectors.toList());
         repository.saveAll(EventConverter.convertToEntities(validEvents));
     }
 
     public List<FormUsageDto> getTopFiveForms() {
         return repository.getTopFiveForms(new PageRequest(0, 5));
-    }
-
-    public List<EventDto> getBetween(String startDate, String endDate, String startTime, String endTime) {
-        List<EventEntity> eventEntities =
-                repository.findAllByTsBetween(getTimestamp(startDate, startTime), getTimestamp(endDate, endTime));
-        return EventConverter.convertToDtos(eventEntities);
     }
 
 }

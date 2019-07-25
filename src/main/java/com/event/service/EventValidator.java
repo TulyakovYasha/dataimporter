@@ -1,4 +1,4 @@
-package com.event.services;
+package com.event.service;
 
 import com.event.dto.EventDto;
 import org.apache.commons.lang3.StringUtils;
@@ -9,7 +9,7 @@ import java.util.Objects;
 @Component
 public class EventValidator {
 
-    public boolean isEventValid(EventDto event) {
+    public boolean isValid(EventDto event) {
         return StringUtils.isNotBlank(event.getSsoid())
                 && StringUtils.isNotBlank(event.getGrp())
                 && StringUtils.isNotBlank(event.getType())

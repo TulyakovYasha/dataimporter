@@ -1,6 +1,7 @@
 package com.event.dto;
 
-import java.net.URL;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class EventDto {
 
@@ -12,6 +13,7 @@ public class EventDto {
     private String url;
     private String orgId;
     private String formId;
+    private String code;
     private String ltpa;
     private String sudirResponse;
     private String ymdh;
@@ -20,7 +22,7 @@ public class EventDto {
     }
 
     public EventDto(String ssoid, Long ts, String grp, String type, String subtype, String url, String orgId,
-            String formId, String ymdh) {
+            String formId, String code, String ymdh) {
         this.ssoid = ssoid;
         this.ts = ts;
         this.grp = grp;
@@ -29,6 +31,7 @@ public class EventDto {
         this.url = url;
         this.orgId = orgId;
         this.formId = formId;
+        this.code = code;
         this.ymdh = ymdh;
     }
 
@@ -96,6 +99,14 @@ public class EventDto {
         this.formId = formId;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     public String getLtpa() {
         return ltpa;
     }
@@ -118,5 +129,51 @@ public class EventDto {
 
     public void setYmdh(String ymdh) {
         this.ymdh = ymdh;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        EventDto eventDto = (EventDto) o;
+
+        return new EqualsBuilder()
+                .append(ssoid, eventDto.ssoid)
+                .append(ts, eventDto.ts)
+                .append(grp, eventDto.grp)
+                .append(type, eventDto.type)
+                .append(subtype, eventDto.subtype)
+                .append(url, eventDto.url)
+                .append(orgId, eventDto.orgId)
+                .append(formId, eventDto.formId)
+                .append(code, eventDto.code)
+                .append(ltpa, eventDto.ltpa)
+                .append(sudirResponse, eventDto.sudirResponse)
+                .append(ymdh, eventDto.ymdh)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(ssoid)
+                .append(ts)
+                .append(grp)
+                .append(type)
+                .append(subtype)
+                .append(url)
+                .append(orgId)
+                .append(formId)
+                .append(code)
+                .append(ltpa)
+                .append(sudirResponse)
+                .append(ymdh)
+                .toHashCode();
     }
 }

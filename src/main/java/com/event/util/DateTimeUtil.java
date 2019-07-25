@@ -6,9 +6,12 @@ import java.time.format.DateTimeFormatter;
 
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
-public class DateTimeUtil {
+public final class DateTimeUtil {
 
-    public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-ddHH:mm");
+    private DateTimeUtil() {
+    }
+
+    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-ddHH:mm");
 
     public static Long getTimestamp(String date, String time) {
         if (isNotBlank(date) && isNotBlank(time)) {

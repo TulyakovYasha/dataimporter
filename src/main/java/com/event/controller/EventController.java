@@ -1,6 +1,6 @@
 package com.event.controller;
 
-import com.event.services.EventService;
+import com.event.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,7 +34,7 @@ public class EventController {
         String endDate = request.getParameter("endDate");
         String startTime = request.getParameter("startTime");
         String endTime = request.getParameter("endTime");
-        request.setAttribute("events", eventService.getBetween(startDate, endDate, startTime, endTime));
+        request.setAttribute("events", eventService.findAllBetween(startDate, endDate, startTime, endTime));
         return "users";
     }
 

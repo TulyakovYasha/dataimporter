@@ -8,6 +8,7 @@ CREATE TABLE events
   url            VARCHAR,
   org_id         VARCHAR,
   form_id        VARCHAR,
+  code           VARCHAR,
   ltpa           VARCHAR,
   sudir_response VARCHAR,
   ymdh           VARCHAR NOT NULL

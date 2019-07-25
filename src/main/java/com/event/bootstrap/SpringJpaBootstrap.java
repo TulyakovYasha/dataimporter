@@ -1,7 +1,7 @@
 package com.event.bootstrap;
 
 import com.event.parser.EventDtoCsvParser;
-import com.event.services.EventService;
+import com.event.service.EventService;
 import com.event.dto.EventDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
